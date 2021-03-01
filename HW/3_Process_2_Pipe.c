@@ -1,3 +1,9 @@
+/**********************************************************************************/
+/* This file is not indended to be compiled nor run.  It is simply pseudocode     */
+/* connecting three UNIX process together with two pipes by using the UNIX system */
+/* calls.  It is written with C programming language code, syntax, and semantics. */
+/**********************************************************************************/
+
 #define STD_INPUT 0 /* File descriptor for standard input */
 #define STD_OUTPUT 1 /* File descriptor for standard output */
 pipeline(process1, process2, process3)
