@@ -15,18 +15,18 @@ char *process1, *process2, *process3;
 	pipe(&fd[0]); /* Creates the first pipe */
 	if (fork() != 0) /* Creates the firsts child, and checks who is */
 	/* returning from the fork() */
-		{
-		/* This is executed by the parent, process1 */
-		close(fd[0]); /* Closes the read file descriptor because the */
-		/* process1 does not need to read from the pipe */
-		close(STD_OUTPUT); /* Closes the standard output to prepare for the */
-		/* new output to the pipe */
-		dup (fd[1]); /* Sets the output to write to the pipe */
-		close(fd[1]); /* Closes the write file descriptor because it is */
-		/* not needed anymore */
-		execl(process1, process1, 0);
-		/* Turns the process1 into the user’s commands */
-		}
+	{
+	    /* This is executed by the parent, process1 */
+	    close(fd[0]); /* Closes the read file descriptor because the */
+	    /* process1 does not need to read from the pipe */
+	    close(STD_OUTPUT); /* Closes the standard output to prepare for the */
+	   	/* new output to the pipe */
+	   	dup (fd[1]); /* Sets the output to write to the pipe */
+	   	close(fd[1]); /* Closes the write file descriptor because it is */
+	    /* not needed anymore */
+	    execl(process1, process1, 0);
+	    /* Turns the process1 into the user’s commands */
+	}
 	else
 	{
 		/* This is executed by the first child, process2 */
@@ -40,23 +40,23 @@ char *process1, *process2, *process3;
 		if (fork() != 0) /* Creates the second child, and checks who is */
 		/* returning from the fork() */
 		{
-		close(fd[0]); /* Process2 does not need to read from the pipe */
-		close(STD_OUTPUT);
-		/* Prepares process2 for new output to the pipe */
-		dup (fd[1]); /* Sets the process2 output to write to the pipe */
-		close(fd[1]); /* The write file descriptor is no longer needed */
-		execl(process2, process2, 0);
-		/* Turns the process2 into the user’s commands */
+		    close(fd[0]); /* Process2 does not need to read from the pipe */
+		    close(STD_OUTPUT);
+	    	/* Prepares process2 for new output to the pipe */
+	    	dup (fd[1]); /* Sets the process2 output to write to the pipe */
+	    	close(fd[1]); /* The write file descriptor is no longer needed */
+		    execl(process2, process2, 0);
+		    /* Turns the process2 into the user’s commands */
 		}
 		else
 		{
-		/* This is executed by the second child, process3 */
-		close(fd[1]); /* Process3 does not need to write to the pipe */
-		close(STD_INPUT); /* Prepares for new standard input */
-		dup (fd[0]); /* Sets the process3 input to come from the pipe */
-		close(fd[0]); /* The read file descriptor is no longer needed */
-		execl(process3, process3, 0);
-		/* Turns the process3 into the user’s commands */
+		    /* This is executed by the second child, process3 */
+		    close(fd[1]); /* Process3 does not need to write to the pipe */
+		    close(STD_INPUT); /* Prepares for new standard input */
+		    dup (fd[0]); /* Sets the process3 input to come from the pipe */
+		    close(fd[0]); /* The read file descriptor is no longer needed */
+		    execl(process3, process3, 0);
+		    /* Turns the process3 into the user’s commands */
 		}
 	}
 }
