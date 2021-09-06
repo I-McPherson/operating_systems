@@ -14,7 +14,7 @@ Inside of the driver, you have the option to run it to a certain point, where it
 anything from 0 (manually step through all) to 32767 (run all the way through).  To have it run infinitely,
 you may enter 40000.  In this mode, it will only show errors and warnings.
 
-After that, you have the option to input a speed from 0 to 5000.  THIS SPEED IS NOT LINEAR.  I recommend
+After that, you have the option to input a speed from 0 to 5000.  This speed is not linear.  I recommend
 running it at 3850, that is the maximum speed to be able to monitor what is happening while it is moving quickly.
   
  Thank you for looking at my work!
